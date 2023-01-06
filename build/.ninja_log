@@ -1,0 +1,19 @@
+# ninja log v5
+553	660	1673041843107319999	src/driver	5f110a8712a83416
+611	672	1673036498638735229	src/RealFunctionAPI/libRealFunctionAPI.a	80d00a4d0f42d437
+1	611	1673036498578734629	src/RealFunctionAPI/CMakeFiles/RealFunctionAPI.dir/polynomial.cpp.o	54fe0d0ca5a592c4
+1	583	1673036498552734369	src/RealFunctionAPI/CMakeFiles/RealFunctionAPI.dir/binary_operation_function.cpp.o	4e91514f69ffb995
+2	559	1673036498530734149	src/RealFunctionAPI/CMakeFiles/RealFunctionAPI.dir/sum_function.cpp.o	69db220d599c2011
+1	498	1673036498466733508	src/RealFunctionAPI/CMakeFiles/RealFunctionAPI.dir/real_function.cpp.o	64ff93991a32cd4f
+1	553	1673041842998318947	src/CMakeFiles/driver.dir/driver.cpp.o	38ae4d10ea4a51f9
+1	106	1673041924123101694	src/CMakeFiles/driver.dir/driver.cpp.o	dfbf124591d92ab4
+106	236	1673041924253102949	src/driver	5f110a8712a83416
+1	107	1673041939789252852	src/CMakeFiles/driver.dir/driver.cpp.o	dfbf124591d92ab4
+107	239	1673041939921254125	src/driver	5f110a8712a83416
+0	567	1673042748501056381	src/CMakeFiles/driver.dir/driver.cpp.o	dfbf124591d92ab4
+1	618	1673042748550056855	src/RealFunctionAPI/CMakeFiles/RealFunctionAPI.dir/real_function.cpp.o	64ff93991a32cd4f
+2	697	1673042748631057641	src/RealFunctionAPI/CMakeFiles/RealFunctionAPI.dir/sum_function.cpp.o	69db220d599c2011
+1	761	1673042748695058261	src/RealFunctionAPI/CMakeFiles/RealFunctionAPI.dir/binary_operation_function.cpp.o	4e91514f69ffb995
+1	761	1673042748694058251	src/RealFunctionAPI/CMakeFiles/RealFunctionAPI.dir/polynomial.cpp.o	54fe0d0ca5a592c4
+761	833	1673042748764058929	src/RealFunctionAPI/libRealFunctionAPI.a	80d00a4d0f42d437
+833	936	1673042748873059986	src/driver	5f110a8712a83416
