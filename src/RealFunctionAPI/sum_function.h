@@ -2,6 +2,7 @@
 #include "real_function.h"
 #include <memory>
 
+namespace RealFunctionAPI{
 class SumFunction : public BinaryOperationFunction{
 
     public:
@@ -12,3 +13,5 @@ class SumFunction : public BinaryOperationFunction{
         std::unique_ptr<RealFunction> calculateDerivative() override;
 
 };
+
+}

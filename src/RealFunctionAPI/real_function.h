@@ -4,6 +4,7 @@
 #include <memory>
 #include <ostream>
 
+namespace RealFunctionAPI{
 class RealFunction{
 
     friend std::ostream &operator<<(std::ostream &, const RealFunction &);
@@ -47,5 +48,7 @@ class RealFunction{
 
 };
 
+
+}
 
 #endif

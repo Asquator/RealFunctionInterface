@@ -3,6 +3,8 @@
 
 using namespace std;
 
+namespace RealFunctionAPI{
+
 RealFunction::~RealFunction(){}
 
 shared_ptr<const RealFunction> RealFunction::getDerivative(){
@@ -14,4 +16,6 @@ shared_ptr<const RealFunction> RealFunction::getDerivative(){
 
 ostream &operator<<(ostream &os, const RealFunction &func){
     return func.print(os);
+}
+
 }

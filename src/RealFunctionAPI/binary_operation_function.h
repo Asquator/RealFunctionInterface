@@ -5,6 +5,7 @@
 #include <functional>
 #include <memory>
 
+namespace RealFunctionAPI{
 class BinaryOperationFunction : public RealFunction{
 
     private:
@@ -25,5 +26,7 @@ class BinaryOperationFunction : public RealFunction{
         const RealFunction &getRightOperand() const;
         */
 };
+
+}
 
 #endif

@@ -10,6 +10,8 @@
 
 #include "real_function.h"
 
+
+namespace RealFunctionAPI{
 /*
 Polynomial: represents a real valued polynomial function
 a class invariant is a reduced vector with polynomial coefficients without trailing zeroes
@@ -54,5 +56,7 @@ class Polynomial : public RealFunction {
 
    
 };
+
+}
 
 #endif

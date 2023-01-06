@@ -1,7 +1,7 @@
 
 cmake_minimum_required(VERSION 3.10)
 
-project(RealFunctionAPI)
+project(RealFunctionAPI_lib)
 
 set (SOURCES
 real_function.cpp

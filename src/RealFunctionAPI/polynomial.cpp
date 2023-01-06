@@ -3,8 +3,10 @@
 #include <ostream>
 
 using namespace std;
-using real_type = RealFunction::real_type;
+using real_type = RealFunctionAPI::RealFunction::real_type;
 
+
+namespace RealFunctionAPI{
 /**
  * @brief Construct a default zero Polynomial
  * 
@@ -114,4 +116,6 @@ unique_ptr<RealFunction> Polynomial::calculateDerivative() {
     }
     
     return unique_ptr<RealFunction> {deriv};
+}
+
 }

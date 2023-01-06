@@ -5,7 +5,9 @@
 #include "real_function.h"
 
 using std::function;
-using real_type = RealFunction::real_type;
+using real_type = RealFunctionAPI::RealFunction::real_type;
+
+namespace RealFunctionAPI{
 
 BinaryOperationFunction::BinaryOperationFunction(const RealFunction &left, const RealFunction &right, const function<real_type(real_type, real_type)> &op):
 operation(op), leftOperand(left.clone()), rightOperand(right.clone()) {}
@@ -30,3 +32,5 @@ const RealFunction &BinaryOperationFunction::getRightOperand() const{
 }
 
 */
+
+}
