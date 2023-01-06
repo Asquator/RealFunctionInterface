@@ -1,2 +1,0 @@
-/usr/bin/ar qc libRealFunctionAPI.a CMakeFiles/RealFunctionAPI.dir/real_function.cpp.o CMakeFiles/RealFunctionAPI.dir/binary_operation_function.cpp.o CMakeFiles/RealFunctionAPI.dir/polynomial.cpp.o CMakeFiles/RealFunctionAPI.dir/sum_function.cpp.o
-/usr/bin/ranlib libRealFunctionAPI.a

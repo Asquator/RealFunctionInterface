@@ -1,8 +1,0 @@
-/home/acf/Programming/cpp/RealFunctionInterface/build/CMakeFiles/edit_cache.dir
-/home/acf/Programming/cpp/RealFunctionInterface/build/CMakeFiles/rebuild_cache.dir
-/home/acf/Programming/cpp/RealFunctionInterface/build/src/CMakeFiles/driver.dir
-/home/acf/Programming/cpp/RealFunctionInterface/build/src/CMakeFiles/edit_cache.dir
-/home/acf/Programming/cpp/RealFunctionInterface/build/src/CMakeFiles/rebuild_cache.dir
-/home/acf/Programming/cpp/RealFunctionInterface/build/src/RealFunctionAPI/CMakeFiles/RealFunctionAPI.dir
-/home/acf/Programming/cpp/RealFunctionInterface/build/src/RealFunctionAPI/CMakeFiles/edit_cache.dir
-/home/acf/Programming/cpp/RealFunctionInterface/build/src/RealFunctionAPI/CMakeFiles/rebuild_cache.dir
