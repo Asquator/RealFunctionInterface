@@ -22,8 +22,8 @@ class Polynomial : public RealFunction {
         std::vector<real_type> coefficients;
         void reduce();
 
-        std::unique_ptr<RealFunction> calculateDerivative() override;
-        std::ostream &print(std::ostream &os) const override;
+        std::unique_ptr<RealFunction> calculateDerivative() const override;
+        void print(std::ostream &os) const override;
 
 
     public:

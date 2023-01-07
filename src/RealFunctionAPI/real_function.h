@@ -11,9 +11,9 @@ class RealFunction{
 
     private:
     
-        std::shared_ptr<const RealFunction> derivative = nullptr;
-        virtual std::unique_ptr<RealFunction> calculateDerivative() = 0;
-        virtual std::ostream &print(std::ostream &) const = 0;
+        mutable std::shared_ptr<const RealFunction> derivative = nullptr;
+        virtual std::unique_ptr<RealFunction> calculateDerivative() const = 0;
+        virtual void print(std::ostream &) const = 0;
 
 
     public:
@@ -28,26 +28,25 @@ class RealFunction{
         RealFunction(RealFunction &&) = default;
         RealFunction &operator=(RealFunction &&) = default;
 
-
+         /*polymorphic destructor*/
+        virtual ~RealFunction();
 
         /**
          * @brief Dynamic virtual clone constructor
          * @return RealFunction* copy of the object
          */
+
+        const RealFunction &getDerivative() const;
+
         virtual RealFunction *clone() const = 0;
-
-        /*polymorphic destructor*/
-        virtual ~RealFunction();
-
-        std::shared_ptr<const RealFunction> getDerivative();
 
         virtual bool isDefined(real_type) const = 0;
 
-        
         virtual real_type operator()(real_type) const = 0;
 
 };
 
+  std::unique_ptr<RealFunction> operator+(const RealFunction &, const RealFunction &);
 
 }
 

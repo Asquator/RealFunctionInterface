@@ -69,14 +69,12 @@ real_type Polynomial::operator()(real_type x) const {
 }
 
 
-ostream &Polynomial::print(ostream &os) const{
+void Polynomial::print(ostream &os) const{
     os << coefficients[0] << (coefficients.size() > 1 ? " + " : "");
 
     for(vector<real_type>::size_type i = 1; i < coefficients.size(); i++)
         os << coefficients[i] << Polynomial::variableName << "^" << i
         << (i < coefficients.size() - 1 ? " + " : "");
-
-    return os;
 }
 
 
@@ -105,7 +103,7 @@ Polynomial *Polynomial::clone() const {
 
 
 
-unique_ptr<RealFunction> Polynomial::calculateDerivative() {
+unique_ptr<RealFunction> Polynomial::calculateDerivative() const{
     Polynomial *deriv = new Polynomial;
    
     //if the polynomial isn't const

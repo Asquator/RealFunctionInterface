@@ -7,11 +7,11 @@ class SumFunction : public BinaryOperationFunction{
 
     public:
         SumFunction(const RealFunction &, const RealFunction &);
-        bool isDefined(real_type) const override;
-
+        SumFunction *clone() const override;
+        
     private:
-        std::unique_ptr<RealFunction> calculateDerivative() override;
-
+        std::unique_ptr<RealFunction> calculateDerivative() const override;
+        void print(std::ostream &os) const override;
 };
 
 }

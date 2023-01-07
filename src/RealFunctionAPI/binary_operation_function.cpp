@@ -1,5 +1,6 @@
 #include <functional>
 #include <memory>
+#include <iostream>
 
 #include "binary_operation_function.h"
 #include "real_function.h"
@@ -16,21 +17,10 @@ real_type BinaryOperationFunction::operator()(real_type x) const {
     return operation((*leftOperand)(x), (*rightOperand)(x));
 }
 
-
 bool BinaryOperationFunction::isDefined(real_type x) const {
     return leftOperand->isDefined(x) &&
     rightOperand->isDefined(x);
 }
 
-/*
-const RealFunction &BinaryOperationFunction::getLeftOperand() const{
-    return *leftOperand;
-}
-
-const RealFunction &BinaryOperationFunction::getRightOperand() const{
-    return *rightOperand;
-}
-
-*/
 
 }
