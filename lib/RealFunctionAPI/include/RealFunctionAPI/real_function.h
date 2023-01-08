@@ -36,7 +36,7 @@ class RealFunction{
          * @return RealFunction* copy of the object
          */
 
-        const RealFunction &getDerivative() const;
+        const std::shared_ptr<const RealFunction> getDerivative() const;
 
         virtual RealFunction *clone() const = 0;
 
@@ -46,7 +46,6 @@ class RealFunction{
 
 };
 
-  std::unique_ptr<RealFunction> operator+(const RealFunction &, const RealFunction &);
 
 }
 

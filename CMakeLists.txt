@@ -1,6 +1,8 @@
 
 cmake_minimum_required(VERSION 3.10)
 
-project(tester)
+project(RealFunction)
 
-add_subdirectory(src)
+#add_subdirectory(${CMAKE_SOURCE_DIR}/src)
+add_subdirectory(${CMAKE_SOURCE_DIR}/lib/RealFunctionAPI)
+add_subdirectory(${CMAKE_SOURCE_DIR}/tests)

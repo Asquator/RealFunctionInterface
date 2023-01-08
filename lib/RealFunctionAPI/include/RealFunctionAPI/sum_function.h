@@ -1,3 +1,6 @@
+#ifndef SUM_FUNCTION_H
+#define SUM_FUNCTION_H
+
 #include "binary_operation_function.h"
 #include "real_function.h"
 #include <memory>
@@ -7,6 +10,7 @@ class SumFunction : public BinaryOperationFunction{
 
     public:
         SumFunction(const RealFunction &, const RealFunction &);
+        SumFunction(std::unique_ptr<RealFunction>, std::unique_ptr<RealFunction>);
         SumFunction *clone() const override;
         
     private:
@@ -15,3 +19,5 @@ class SumFunction : public BinaryOperationFunction{
 };
 
 }
+
+#endif

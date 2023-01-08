@@ -8,7 +8,6 @@ using namespace std;
 int main(){
     RealFunctionAPI::Polynomial p {1,-2};    
     auto &de= p.getDerivative();
-    cout << p << endl << de << endl;
-    cout << *(p + de) << endl;
+    cout << p << endl << *de << endl;
     return 0;
 }

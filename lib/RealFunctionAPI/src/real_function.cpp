@@ -2,7 +2,6 @@
 #include <memory>
 
 #include "real_function.h"
-#include "sum_function.h"
 
 using namespace std;
 
@@ -10,11 +9,26 @@ namespace RealFunctionAPI{
 
 RealFunction::~RealFunction(){};
 
-const RealFunction &RealFunction::getDerivative() const{
+
+/*
+ * Manually defined copy control members: making a deep copy of the derivative
+ 
+
+ 
+RealFunction::RealFunction(const RealFunction &other):
+    derivative(other.getDerivative()->clone()){}
+
+RealFunction &RealFunction::operator=(const RealFunction &other){
+    derivative.reset(other.getDerivative()->clone());
+    return *this;
+}
+*/
+
+const std::shared_ptr<const RealFunction> RealFunction::getDerivative() const{
     if(!derivative)
         derivative = calculateDerivative();
 
-    return *derivative;    
+    return derivative;    
 }
 
 ostream &operator<<(ostream &os, const RealFunction &func){
@@ -28,10 +42,6 @@ ostream &operator<<(ostream &os, const RealFunction &func){
  * @param right 
  * @return std::unique_ptr<RealFunction> a unique pointer to a sum real function object
  */
- std::unique_ptr<RealFunction> operator+(const RealFunction &left, const RealFunction &right){
-    std::unique_ptr<RealFunction> ret {new SumFunction {left, right}};
-    return ret;
- }
-
+ 
 
 }
