@@ -6,15 +6,9 @@ set (SOURCES
     src/polynomial.cpp
     src/sum_function.cpp
     src/product_function.cpp
+    src/difference_function.cpp
+    src/fraction_function.cpp
 
-)
-
-set (HEADERS
-    real_function.h
-    binary_operation_function.h
-    polynomial.h
-    sum_function.h
-    product_function.h
 )
 
 add_library(RealFunctionAPI ${SOURCES})

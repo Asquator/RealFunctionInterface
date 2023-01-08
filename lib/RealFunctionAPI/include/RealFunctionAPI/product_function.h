@@ -8,9 +8,8 @@ namespace RealFunctionAPI{
 class ProductFunction : public BinaryOperationFunction {
 
     public:
-        using BinaryOperationFunction::BinaryOperationFunction;
-        ProductFunction(const RealFunction &, const RealFunction &);
         ProductFunction(std::unique_ptr<RealFunction>, std::unique_ptr<RealFunction>);
+        ProductFunction(const RealFunction &, const RealFunction &);
         ProductFunction *clone() const override;
 
     private:

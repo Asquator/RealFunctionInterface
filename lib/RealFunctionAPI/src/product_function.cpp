@@ -15,17 +15,13 @@ ProductFunction::ProductFunction(const RealFunction &left, const RealFunction &r
     BinaryOperationFunction(left, right, std::multiplies<real_type>()){}
 
 
-ProductFunction::ProductFunction(unique_ptr<RealFunction> left, unique_ptr<RealFunction> right):
-    BinaryOperationFunction(std::move(left), std::move(right), std::multiplies<real_type>()){}
-
-
 ProductFunction *ProductFunction::clone() const {
     return new ProductFunction{*getLeftOperand(), *getRightOperand()};
 }
 
 
 void ProductFunction::print(ostream &os) const{
-    os << "(" << getLeftOperand() << ") * (" << getRightOperand() << ")";  
+    os << "(" << *getLeftOperand() << ") * (" << *getRightOperand() << ")";  
 }
 
 /**

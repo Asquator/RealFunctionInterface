@@ -1,9 +1,11 @@
 #ifndef SUM_FUNCTION_H
 #define SUM_FUNCTION_H
 
+#include <memory>
+
 #include "binary_operation_function.h"
 #include "real_function.h"
-#include <memory>
+
 
 namespace RealFunctionAPI{
 class SumFunction : public BinaryOperationFunction{
