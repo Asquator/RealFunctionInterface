@@ -9,11 +9,7 @@ namespace RealFunctionAPI{
 
 RealFunction::~RealFunction(){};
 
-
-/*
- * Manually defined copy control members: making a deep copy of the derivative
- 
-
+ /*Manually defined copy control members: making a deep copy of the derivative*/
  
 RealFunction::RealFunction(const RealFunction &other):
     derivative(other.getDerivative()->clone()){}
@@ -22,7 +18,7 @@ RealFunction &RealFunction::operator=(const RealFunction &other){
     derivative.reset(other.getDerivative()->clone());
     return *this;
 }
-*/
+
 
 const std::shared_ptr<const RealFunction> RealFunction::getDerivative() const{
     if(!derivative)

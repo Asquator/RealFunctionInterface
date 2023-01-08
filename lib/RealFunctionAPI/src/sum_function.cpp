@@ -1,6 +1,7 @@
 
 #include <memory>
 #include <ostream>
+
 #include "binary_operation_function.h"
 #include "real_function.h"
 #include "sum_function.h"

@@ -22,8 +22,8 @@ class RealFunction{
         /*asking the synthesized copy control operations*/
         RealFunction() = default;
 
-        RealFunction(const RealFunction &) = default;
-        RealFunction &operator=(const RealFunction &) = default;
+        RealFunction(const RealFunction &);
+        RealFunction &operator=(const RealFunction &);
 
         RealFunction(RealFunction &&) = default;
         RealFunction &operator=(RealFunction &&) = default;
