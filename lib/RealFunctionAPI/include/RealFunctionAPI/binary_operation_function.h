@@ -11,16 +11,17 @@
 namespace RealFunctionAPI{
 class BinaryOperationFunction : public RealFunction{
 
+    using operation_type = std::function<real_type (real_type, real_type)>;
+
     private:
-        std::function<real_type (const real_type &, const real_type &)> operation; 
+        operation_type operation; 
         std::shared_ptr<RealFunction> leftOperand;   
         std::shared_ptr<RealFunction> rightOperand; 
 
     public:
-        BinaryOperationFunction(const RealFunction &, const RealFunction &, const std::function<real_type (real_type, real_type)> &);
+        BinaryOperationFunction(const RealFunction &, const RealFunction &, const operation_type&);
 
-        BinaryOperationFunction(std::unique_ptr<RealFunction>, std::unique_ptr<RealFunction>, 
-                    const std::function<real_type (real_type, real_type)> &);
+        BinaryOperationFunction(std::unique_ptr<RealFunction>, std::unique_ptr<RealFunction>, const operation_type &);
                     
         real_type operator()(real_type) const override;
         bool isDefined(real_type) const override;

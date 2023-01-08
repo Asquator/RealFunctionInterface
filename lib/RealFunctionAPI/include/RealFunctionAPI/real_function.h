@@ -10,7 +10,6 @@ class RealFunction{
     friend std::ostream &operator<<(std::ostream &, const RealFunction &);
 
     private:
-    
         mutable std::shared_ptr<const RealFunction> derivative = nullptr;
         virtual std::unique_ptr<RealFunction> calculateDerivative() const = 0;
         virtual void print(std::ostream &) const = 0;

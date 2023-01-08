@@ -19,8 +19,7 @@ SumFunction::SumFunction(const RealFunction &left, const RealFunction &right):
 
 
 SumFunction *SumFunction::clone() const{
-    return new SumFunction{unique_ptr<RealFunction>{getLeftOperand()->clone()}, 
-                            unique_ptr<RealFunction>{getRightOperand()->clone()}};
+    return new SumFunction{*getLeftOperand(), *getRightOperand()};
 };
 
 void SumFunction::print(std::ostream &os) const{

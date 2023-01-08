@@ -1,9 +1,9 @@
-#include "product_function.h"
-#include "sum_function.h"
-#include "binary_operation_function.h"
 #include <functional>
 #include <memory>
 
+#include "binary_operation_function.h"
+#include "product_function.h"
+#include "sum_function.h"
 
 using std::ostream;
 using std::unique_ptr;
@@ -12,7 +12,7 @@ using std::unique_ptr;
 namespace RealFunctionAPI {
 
 ProductFunction::ProductFunction(const RealFunction &left, const RealFunction &right):
-    BinaryOperationFunction(left, right, std::divides<real_type>()){}
+    BinaryOperationFunction(left, right, std::multiplies<real_type>()){}
 
 
 ProductFunction::ProductFunction(unique_ptr<RealFunction> left, unique_ptr<RealFunction> right):
@@ -20,8 +20,7 @@ ProductFunction::ProductFunction(unique_ptr<RealFunction> left, unique_ptr<RealF
 
 
 ProductFunction *ProductFunction::clone() const {
-    return new ProductFunction(unique_ptr<RealFunction>(getLeftOperand()->clone()), 
-                                unique_ptr<RealFunction>(getRightOperand()->clone()));
+    return new ProductFunction{*getLeftOperand(), *getRightOperand()};
 }
 
 
