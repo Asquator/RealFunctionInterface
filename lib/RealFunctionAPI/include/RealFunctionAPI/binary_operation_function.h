@@ -9,26 +9,26 @@
 #include "real_function.h"
 
 namespace RealFunctionAPI{
-class BinaryOperationFunction : public RealFunction{
+class BinaryOperationFunction : public RealFunctionBase{
 
     using operation_type = std::function<real_type (real_type, real_type)>;
 
     private:
         operation_type operation; 
-        std::shared_ptr<RealFunction> leftOperand;   
-        std::shared_ptr<RealFunction> rightOperand; 
+        std::shared_ptr<RealFunctionBase> leftOperand;   
+        std::shared_ptr<RealFunctionBase> rightOperand; 
 
     public:
-        BinaryOperationFunction(const RealFunction &, const RealFunction &, const operation_type&);
 
-        BinaryOperationFunction(std::unique_ptr<RealFunction>, std::unique_ptr<RealFunction>, const operation_type &);
+        BinaryOperationFunction(const RealFunctionBase &, const RealFunctionBase &, const operation_type&);
+        BinaryOperationFunction(std::unique_ptr<RealFunctionBase>, std::unique_ptr<RealFunctionBase>, const operation_type &);
                     
         real_type operator()(real_type) const override;
         bool isDefined(real_type) const override;
 
     protected: 
-        inline std::shared_ptr<const RealFunction> getLeftOperand() const {return leftOperand;}
-        inline std::shared_ptr<const RealFunction> getRightOperand() const {return rightOperand;};
+        inline std::shared_ptr<const RealFunctionBase> getLeftOperand() const {return leftOperand;}
+        inline std::shared_ptr<const RealFunctionBase> getRightOperand() const {return rightOperand;};
         
 };
 

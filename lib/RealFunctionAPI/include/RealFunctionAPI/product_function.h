@@ -8,12 +8,12 @@ namespace RealFunctionAPI{
 class ProductFunction : public BinaryOperationFunction {
 
     public:
-        ProductFunction(std::unique_ptr<RealFunction>, std::unique_ptr<RealFunction>);
-        ProductFunction(const RealFunction &, const RealFunction &);
+        ProductFunction(std::unique_ptr<RealFunctionBase>, std::unique_ptr<RealFunctionBase>);
+        ProductFunction(const RealFunctionBase &, const RealFunctionBase &);
         ProductFunction *clone() const override;
 
     private:
-        std::unique_ptr<RealFunction> calculateDerivative() const override;
+        const RealFunctionBase *calculateDerivative() const override;
         void print(std::ostream &os) const override;
 
 };

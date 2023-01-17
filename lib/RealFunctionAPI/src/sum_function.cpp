@@ -8,26 +8,25 @@ using std::unique_ptr;
 
 namespace RealFunctionAPI{
 
-SumFunction::SumFunction(unique_ptr<RealFunction> left, unique_ptr<RealFunction> right):
+SumFunction::SumFunction(unique_ptr<RealFunctionBase> left, unique_ptr<RealFunctionBase> right):
     BinaryOperationFunction(std::move(left), std::move(right), std::plus<real_type>()) {}
 
 
-SumFunction::SumFunction(const RealFunction &left, const RealFunction &right):
+SumFunction::SumFunction(const RealFunctionBase &left, const RealFunctionBase &right):
     BinaryOperationFunction(left, right, std::plus<real_type>()) {}
 
 
 SumFunction *SumFunction::clone() const{
-    return new SumFunction{*getLeftOperand(), *getRightOperand()};
+    return new SumFunction{*this};
 };
 
 void SumFunction::print(std::ostream &os) const{
-    os << *getLeftOperand() << "+" << *getRightOperand();
+    os << *getLeftOperand() << " + " << *getRightOperand();
 }
 
 
-std::unique_ptr<RealFunction> SumFunction::calculateDerivative() const {
-    unique_ptr<RealFunction> derivative { new SumFunction{ *(getLeftOperand()->getDerivative()), *(getRightOperand()->getDerivative()) } };
-    return derivative;
+const RealFunctionBase *SumFunction::calculateDerivative() const {
+   return new SumFunction{ *(getLeftOperand()->getDerivative()), *(getRightOperand()->getDerivative()) };
 }
 
 }

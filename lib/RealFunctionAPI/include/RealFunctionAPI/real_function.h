@@ -1,51 +1,111 @@
 #ifndef REAL_FUNCTION_H
 #define REAL_FUNCTION_H
 
+
 #include <memory>
 #include <ostream>
+#include "real_math.h"
+#include "real_function_base.h"
 
 namespace RealFunctionAPI{
+
+
 class RealFunction{
 
-    friend std::ostream &operator<<(std::ostream &, const RealFunction &);
+	private:
+	
+		std::unique_ptr<RealFunctionBase> functionPtr = nullptr;
+	
+	public:
+		
+		explicit RealFunction(std::unique_ptr<RealFunctionBase>);
+		friend std::ostream &operator<<(std::ostream &, const RealFunction &);
+		
+		RealFunction(const RealFunction &);
+		RealFunction &operator=(const RealFunction &);
 
-    private:
-        mutable std::shared_ptr<const RealFunction> derivative = nullptr;
-        virtual std::unique_ptr<RealFunction> calculateDerivative() const = 0;
-        virtual void print(std::ostream &) const = 0;
+		RealFunction(RealFunction &&) = default;
+		RealFunction &operator=(RealFunction &&) = default;
+
+		/**
+		 * @brief Get the copy of the derivative
+		 * @return RealFunction Copy of the derivative object
+		 */
+		RealFunction getDerivativeCopy() const;
 
 
-    public:
-        using real_type = long double;
+		bool isDefined(real_type) const;
 
-        /*asking the synthesized copy control operations*/
-        RealFunction() = default;
+		real_type operator()(real_type) const;
 
-        RealFunction(const RealFunction &);
-        RealFunction &operator=(const RealFunction &);
+		bool isDifferentiable(real_type) const;
 
-        RealFunction(RealFunction &&) = default;
-        RealFunction &operator=(RealFunction &&) = default;
+		real_type diff(real_type x);
 
-         /*polymorphic destructor*/
-        virtual ~RealFunction();
 
-        /**
-         * @brief Dynamic virtual clone constructor
-         * @return RealFunction* copy of the object
-         */
 
-        const std::shared_ptr<const RealFunction> getDerivative() const;
+		/*
+		Lvalue-reference assymetric operators
+		*/
+		RealFunction &operator+=(const RealFunction &);
+		RealFunction &operator-=(const RealFunction &);
+		RealFunction &operator*=(const RealFunction &);
+		RealFunction &operator/=(const RealFunction &);
 
-        virtual RealFunction *clone() const = 0;
+		/*
+		Rvalue-reference assymetric operators
+		*/
+		RealFunction &operator+=(RealFunction &&);
+		RealFunction &operator-=(RealFunction &&);
+		RealFunction &operator*=(RealFunction &&);
+		RealFunction &operator/=(RealFunction &&);
 
-        virtual bool isDefined(real_type) const = 0;
 
-        virtual real_type operator()(real_type) const = 0;
+		friend RealFunction operator+(const RealFunction&, const RealFunction&);
+		friend RealFunction operator+(const RealFunction&&, const RealFunction&);
+		friend RealFunction operator+(const RealFunction&, const RealFunction&&);
+		
+		friend RealFunction operator-(const RealFunction&, const RealFunction&);
+		friend RealFunction operator-(const RealFunction&&, const RealFunction&);
+		friend RealFunction operator-(const RealFunction&, const RealFunction&&);
+
+		friend RealFunction operator*(const RealFunction&, const RealFunction&);
+		friend RealFunction operator*(const RealFunction&&, const RealFunction&);
+		friend RealFunction operator*(const RealFunction&, const RealFunction&&);
+
+		friend RealFunction operator/(const RealFunction&, const RealFunction&);
+		friend RealFunction operator/(const RealFunction&&, const RealFunction&);
+		friend RealFunction operator/(const RealFunction&, const RealFunction&&);
+
+		friend RealFunction operator-(const RealFunction&);
+		friend RealFunction operator-(RealFunction&&);
+		
 
 };
 
 
+/*
+Operators on real function wrapper
+*/
+
+RealFunction operator+(const RealFunction&, const RealFunction&);
+RealFunction operator+(const RealFunction&&, const RealFunction&);
+RealFunction operator+(const RealFunction&, const RealFunction&&);
+
+RealFunction operator-(const RealFunction&, const RealFunction&);
+RealFunction operator-(const RealFunction&&, const RealFunction&);
+RealFunction operator-(const RealFunction&, const RealFunction&&);
+
+RealFunction operator*(const RealFunction&, const RealFunction&);
+RealFunction operator*(const RealFunction&&, const RealFunction&);
+RealFunction operator*(const RealFunction&, const RealFunction&&);
+
+RealFunction operator/(const RealFunction&, const RealFunction&);
+RealFunction operator/(const RealFunction&&, const RealFunction&);
+RealFunction operator/(const RealFunction&, const RealFunction&&);
+
+RealFunction operator-(const RealFunction&);
+RealFunction operator-(RealFunction&&);
 }
 
 #endif

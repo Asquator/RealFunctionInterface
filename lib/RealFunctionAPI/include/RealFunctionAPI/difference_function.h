@@ -10,12 +10,12 @@ namespace RealFunctionAPI{
 class DifferenceFunction : public BinaryOperationFunction{
 
     public:
-        DifferenceFunction(const RealFunction &, const RealFunction &);
-        DifferenceFunction(std::unique_ptr<RealFunction>, std::unique_ptr<RealFunction>);
+        DifferenceFunction(const RealFunctionBase &, const RealFunctionBase &);
+        DifferenceFunction(std::unique_ptr<RealFunctionBase>, std::unique_ptr<RealFunctionBase>);
         DifferenceFunction *clone() const override;
         
     private:
-        std::unique_ptr<RealFunction> calculateDerivative() const override;
+        const RealFunctionBase *calculateDerivative() const override;
         void print(std::ostream &os) const override;
 };
 

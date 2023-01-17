@@ -11,8 +11,8 @@ class FractionFunction : public BinaryOperationFunction {
 
     public:
 
-        FractionFunction(const RealFunction &, const RealFunction &);
-        FractionFunction(std::unique_ptr<RealFunction>, std::unique_ptr<RealFunction>);
+        FractionFunction(const RealFunctionBase &, const RealFunctionBase &);
+        FractionFunction(std::unique_ptr<RealFunctionBase>, std::unique_ptr<RealFunctionBase>);
 
         FractionFunction *clone() const override;
 
@@ -20,7 +20,7 @@ class FractionFunction : public BinaryOperationFunction {
 
 
     private:
-        std::unique_ptr<RealFunction> calculateDerivative() const override;
+        const RealFunctionBase *calculateDerivative() const override;
         void print(std::ostream &os) const override;
 
 };

@@ -1,10 +1,12 @@
-#include "polynomial.h"
+
 #include <memory>
 #include <ostream>
+#include <vector>
+
+#include "real_math.h"
+#include "polynomial.h"
 
 using namespace std;
-using real_type = RealFunctionAPI::RealFunction::real_type;
-
 
 namespace RealFunctionAPI{
 /**
@@ -37,6 +39,12 @@ coefficients(coefficients_list) {
  */
 Polynomial::Polynomial(const vector<real_type> &coefficients_vector) : 
 coefficients(coefficients_vector) {
+    reduce();
+}
+
+
+Polynomial::Polynomial(vector<real_type> &&coefficients_vector):
+coefficients(std::move(coefficients_vector)){
     reduce();
 }
 
@@ -98,12 +106,12 @@ vector<real_type>::size_type Polynomial::getDegree() const{
 
 
 Polynomial *Polynomial::clone() const {
-    return new Polynomial(coefficients);
+    return new Polynomial{*this};
 }
 
 
 
-unique_ptr<RealFunction> Polynomial::calculateDerivative() const{
+const RealFunctionBase *Polynomial::calculateDerivative() const{
     Polynomial *deriv = new Polynomial;
    
     //if the polynomial isn't const
@@ -113,7 +121,7 @@ unique_ptr<RealFunction> Polynomial::calculateDerivative() const{
             deriv->coefficients.push_back(*c);
     }
     
-    return unique_ptr<RealFunction> {deriv};
+    return deriv;
 }
 
 }

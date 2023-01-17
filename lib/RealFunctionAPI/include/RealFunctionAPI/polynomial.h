@@ -16,13 +16,13 @@ namespace RealFunctionAPI{
 Polynomial: represents a real valued polynomial function
 a class invariant is a reduced vector with polynomial coefficients without trailing zeroes
 */
-class Polynomial : public RealFunction {
+class Polynomial : public RealFunctionBase {
 
      private:
         std::vector<real_type> coefficients;
         void reduce();
 
-        std::unique_ptr<RealFunction> calculateDerivative() const override;
+        const RealFunctionBase *calculateDerivative() const override;
         void print(std::ostream &os) const override;
 
 
@@ -33,9 +33,10 @@ class Polynomial : public RealFunction {
         Polynomial();
         explicit Polynomial(std::initializer_list<real_type>);
         explicit Polynomial(const std::vector<real_type> &);
+        explicit Polynomial(std::vector<real_type> &&);
 
         /*
-        copy control is inherited from RealFunction.
+        copy control is inherited from RealFunctionBase.
         as polynomials are copied/moved from other polynomials, the invariant is always preserved
         */
 

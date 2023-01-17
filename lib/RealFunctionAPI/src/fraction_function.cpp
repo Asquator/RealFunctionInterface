@@ -7,6 +7,7 @@
 #include "fraction_function.h"
 #include "product_function.h"
 #include "real_function.h"
+#include "real_math.h"
 
 
 using std::ostream;
@@ -14,15 +15,15 @@ using std::unique_ptr;
 
 namespace RealFunctionAPI {
 
-FractionFunction::FractionFunction(const RealFunction &left, const RealFunction &right):
+FractionFunction::FractionFunction(const RealFunctionBase &left, const RealFunctionBase &right):
     BinaryOperationFunction(left, right, std::divides<real_type>()){}
 
-FractionFunction::FractionFunction(unique_ptr<RealFunction> left, unique_ptr<RealFunction> right):
+FractionFunction::FractionFunction(unique_ptr<RealFunctionBase> left, unique_ptr<RealFunctionBase> right):
     BinaryOperationFunction(std::move(left), std::move(right), std::divides<real_type>()) {}
 
 
 FractionFunction *FractionFunction::clone() const {
-    return new FractionFunction(*getLeftOperand(), *getRightOperand());
+    return new FractionFunction{*this};
 }
 
 
@@ -32,24 +33,22 @@ void FractionFunction::print(ostream &os) const{
 
 
 bool FractionFunction::isDefined(real_type x) const {
-    return BinaryOperationFunction::isDefined(x) && (*this)(x);
+    return BinaryOperationFunction::isDefined(x) && !round_compare(x, 0);
 }
 
 
 /*
  * Using the rule to calculate a derivative of fraction to construct the derivative
 */
-unique_ptr<RealFunction> FractionFunction::calculateDerivative() const {
+const RealFunctionBase *FractionFunction::calculateDerivative() const {
 
-    unique_ptr<RealFunction> prod1 {new ProductFunction{ *(getLeftOperand()->getDerivative()), *getRightOperand()} };
-    unique_ptr<RealFunction> prod2 {new ProductFunction{ *getLeftOperand(), *(getRightOperand()->getDerivative())} };
+    unique_ptr<RealFunctionBase> prod1 {new ProductFunction{ *(getLeftOperand()->getDerivative()), *getRightOperand()} };
+    unique_ptr<RealFunctionBase> prod2 {new ProductFunction{ *getLeftOperand(), *(getRightOperand()->getDerivative())} };
 
-    unique_ptr<RealFunction> numerator {new DifferenceFunction{std::move(prod1), std::move(prod2)}};
-    unique_ptr<RealFunction> denominator {new ProductFunction{*getRightOperand(), *getRightOperand()}};
+    unique_ptr<RealFunctionBase> numerator {new DifferenceFunction{std::move(prod1), std::move(prod2)}};
+    unique_ptr<RealFunctionBase> denominator {new ProductFunction{*getRightOperand(), *getRightOperand()}};
 
-    unique_ptr<RealFunction> derivative {new FractionFunction{std::move(numerator), std::move(denominator)}};
-
-    return derivative;
+    return new FractionFunction{std::move(numerator), std::move(denominator)};
 }
 
 }

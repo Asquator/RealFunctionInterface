@@ -11,12 +11,12 @@ namespace RealFunctionAPI{
 class SumFunction : public BinaryOperationFunction{
 
     public:
-        SumFunction(const RealFunction &, const RealFunction &);
-        SumFunction(std::unique_ptr<RealFunction>, std::unique_ptr<RealFunction>);
+        SumFunction(const RealFunctionBase &, const RealFunctionBase &);
+        SumFunction(std::unique_ptr<RealFunctionBase>, std::unique_ptr<RealFunctionBase>);
         SumFunction *clone() const override;
         
     private:
-        std::unique_ptr<RealFunction> calculateDerivative() const override;
+        const RealFunctionBase *calculateDerivative() const override;
         void print(std::ostream &os) const override;
 };
 
