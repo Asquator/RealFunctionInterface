@@ -3,7 +3,7 @@
 
 #include "binary_operation_function.h"
 
-namespace RealFunctionAPI{
+namespace RealFunctionAPI_impl{
 
 class ProductFunction : public BinaryOperationFunction {
 

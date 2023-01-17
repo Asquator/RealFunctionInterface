@@ -9,7 +9,7 @@ using std::ostream;
 using std::unique_ptr;
 
 
-namespace RealFunctionAPI {
+namespace RealFunctionAPI_impl {
 
 ProductFunction::ProductFunction(unique_ptr<RealFunctionBase> left, unique_ptr<RealFunctionBase> right):
     BinaryOperationFunction(std::move(left), std::move(right), std::multiplies<real_type>()) {}

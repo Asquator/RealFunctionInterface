@@ -6,7 +6,7 @@
 
 using std::unique_ptr;
 
-namespace RealFunctionAPI{
+namespace RealFunctionAPI_impl{
 
 SumFunction::SumFunction(unique_ptr<RealFunctionBase> left, unique_ptr<RealFunctionBase> right):
     BinaryOperationFunction(std::move(left), std::move(right), std::plus<real_type>()) {}

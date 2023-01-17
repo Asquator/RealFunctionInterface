@@ -2,17 +2,23 @@
 #define REAL_FUNCTION_H
 
 
+#include <initializer_list>
 #include <memory>
 #include <ostream>
+#include <vector>
+
 #include "real_math.h"
 #include "real_function_base.h"
+#include "special_function.h"
 
 namespace RealFunctionAPI{
-
+	
+using Specials = RealFunctionAPI_impl::SpecialFunction::Specials;
 
 class RealFunction{
-
 	private:
+		//abstract base of any real function object
+		using RealFunctionBase = RealFunctionAPI_impl::RealFunctionBase;
 	
 		std::unique_ptr<RealFunctionBase> functionPtr = nullptr;
 	
@@ -41,8 +47,6 @@ class RealFunction{
 		bool isDifferentiable(real_type) const;
 
 		real_type diff(real_type x);
-
-
 
 		/*
 		Lvalue-reference assymetric operators
@@ -84,25 +88,30 @@ class RealFunction{
 };
 
 
-/*
-Operators on real function wrapper
-*/
+RealFunction createSpecialFunction(Specials);
+
+RealFunction createPolynomial(const std::vector<real_type> &);
+RealFunction createPolynomial(std::vector<real_type> &&);
+RealFunction createPolynomial(std::initializer_list<real_type>);
+
+
+//Operators on real function wrapper
 
 RealFunction operator+(const RealFunction&, const RealFunction&);
-RealFunction operator+(const RealFunction&&, const RealFunction&);
-RealFunction operator+(const RealFunction&, const RealFunction&&);
+RealFunction operator+(RealFunction&&, const RealFunction&);
+RealFunction operator+(const RealFunction&, RealFunction&&);
 
 RealFunction operator-(const RealFunction&, const RealFunction&);
-RealFunction operator-(const RealFunction&&, const RealFunction&);
+RealFunction operator-(RealFunction&&, const RealFunction&);
 RealFunction operator-(const RealFunction&, const RealFunction&&);
 
 RealFunction operator*(const RealFunction&, const RealFunction&);
-RealFunction operator*(const RealFunction&&, const RealFunction&);
-RealFunction operator*(const RealFunction&, const RealFunction&&);
+RealFunction operator*(RealFunction&&, const RealFunction&);
+RealFunction operator*(const RealFunction&, RealFunction&&);
 
 RealFunction operator/(const RealFunction&, const RealFunction&);
-RealFunction operator/(const RealFunction&&, const RealFunction&);
-RealFunction operator/(const RealFunction&, const RealFunction&&);
+RealFunction operator/(RealFunction&&, const RealFunction&);
+RealFunction operator/(const RealFunction&, RealFunction&&);
 
 RealFunction operator-(const RealFunction&);
 RealFunction operator-(RealFunction&&);

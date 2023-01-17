@@ -5,10 +5,10 @@
 #include <memory>
 #include <map>
 
-#include "real_function.h"
+#include "real_function_base.h"
 
 
-namespace RealFunctionAPI {
+namespace RealFunctionAPI_impl {
 
 class SpecialFunction : public RealFunctionBase {
 		
@@ -43,19 +43,12 @@ class SpecialFunction : public RealFunctionBase {
 		//calculate derivative of a special
 		static RealFunctionBase *calculateDerivative(Specials);
 
-		const RealFunctionBase *calculateDerivative() const override;
+		const RealFunctionBase *calculateDerivative() const final;
 
 	
 	public:
 
 		SpecialFunction(Specials);
-		
-		/**
-		 * @brief Create a new Special function
-		 * 
-		 * @return SpecialFunction* new dynamically allocated special function
-		 *
-		static SpecialFunction *createSpecial(Specials);*/
 
 		SpecialFunction *clone() const override;
 

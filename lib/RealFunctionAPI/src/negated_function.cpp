@@ -1,13 +1,13 @@
 #include "negated_function.h"
 #include "binary_operation_function.h"
-#include "real_function.h"
+#include "real_function_base.h"
 #include <memory>
 #include <ostream>
 
 
 using std::unique_ptr;
 
-namespace RealFunctionAPI {
+namespace RealFunctionAPI_impl {
 
 
 NegatedFunction::NegatedFunction(std::unique_ptr<RealFunctionBase> other):
@@ -35,7 +35,7 @@ void NegatedFunction::print(std::ostream &os) const{
 }
 
 const RealFunctionBase *NegatedFunction::calculateDerivative() const{
-	return new NegatedFunction{std::unique_ptr<RealFunctionBase>(operand->clone())};
+	return new NegatedFunction{*operand->getDerivative()};
 }
 
 }

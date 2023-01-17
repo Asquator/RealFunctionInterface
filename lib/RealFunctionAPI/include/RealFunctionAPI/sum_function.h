@@ -4,10 +4,9 @@
 #include <memory>
 
 #include "binary_operation_function.h"
-#include "real_function.h"
 
 
-namespace RealFunctionAPI{
+namespace RealFunctionAPI_impl{
 class SumFunction : public BinaryOperationFunction{
 
     public:

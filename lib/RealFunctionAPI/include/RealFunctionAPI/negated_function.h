@@ -3,9 +3,9 @@
 
 
 #include <memory>
-#include "real_function.h"
+#include "real_function_base.h"
 
-namespace RealFunctionAPI {
+namespace RealFunctionAPI_impl {
 
 	class NegatedFunction : public RealFunctionBase {
 

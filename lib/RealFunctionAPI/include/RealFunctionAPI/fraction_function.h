@@ -5,7 +5,7 @@
 #include <memory>
 #include <ostream>
 
-namespace RealFunctionAPI{
+namespace RealFunctionAPI_impl{
 
 class FractionFunction : public BinaryOperationFunction {
 

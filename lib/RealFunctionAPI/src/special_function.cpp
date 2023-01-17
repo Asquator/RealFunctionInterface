@@ -14,7 +14,7 @@
 using std::unique_ptr;
 using std::map;
 
-namespace RealFunctionAPI {
+namespace RealFunctionAPI_impl {
 
 SpecialFunction::SpecialFunction(Specials specialType,
 						const mapping_type &function_mapping,

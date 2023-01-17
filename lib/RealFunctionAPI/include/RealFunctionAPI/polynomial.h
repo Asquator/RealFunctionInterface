@@ -8,10 +8,10 @@
 #include <vector>
 #include <iterator>
 
-#include "real_function.h"
+#include "real_function_base.h"
 
 
-namespace RealFunctionAPI{
+namespace RealFunctionAPI_impl{
 /*
 Polynomial: represents a real valued polynomial function
 a class invariant is a reduced vector with polynomial coefficients without trailing zeroes
@@ -32,8 +32,8 @@ class Polynomial : public RealFunctionBase {
         /*constructors*/
         Polynomial();
         explicit Polynomial(std::initializer_list<real_type>);
-        explicit Polynomial(const std::vector<real_type> &);
-        explicit Polynomial(std::vector<real_type> &&);
+        Polynomial(const std::vector<real_type> &);
+        Polynomial(std::vector<real_type> &&);
 
         /*
         copy control is inherited from RealFunctionBase.

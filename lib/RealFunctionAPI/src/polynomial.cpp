@@ -8,7 +8,7 @@
 
 using namespace std;
 
-namespace RealFunctionAPI{
+namespace RealFunctionAPI_impl{
 /**
  * @brief Construct a default zero Polynomial
  * 
@@ -29,7 +29,6 @@ coefficients(coefficients_list) {
         coefficients = {0};
     reduce();
 }
-
 
 
 /**
@@ -112,15 +111,16 @@ Polynomial *Polynomial::clone() const {
 
 
 const RealFunctionBase *Polynomial::calculateDerivative() const{
-    Polynomial *deriv = new Polynomial;
-   
+    Polynomial *deriv = new Polynomial{};
+
     //if the polynomial isn't const
     if(getDegree()){
-        deriv->coefficients = {};
-        for(auto c = coefficients.begin() + 1; c != coefficients.end(); ++c)
-            deriv->coefficients.push_back(*c);
+        deriv->coefficients = {}; //emptying the derivative coefficients
+        for(size_t i = 1; i < coefficients.size(); ++i)
+            deriv->coefficients.push_back(coefficients[i] * i);
     }
     
+    deriv->reduce();
     return deriv;
 }
 

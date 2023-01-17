@@ -8,7 +8,7 @@
 
 using std::unique_ptr;
 
-namespace RealFunctionAPI{
+namespace RealFunctionAPI_impl{
 
 DifferenceFunction::DifferenceFunction(unique_ptr<RealFunctionBase> left, unique_ptr<RealFunctionBase> right):
     BinaryOperationFunction(std::move(left), std::move(right), std::plus<real_type>()) {}

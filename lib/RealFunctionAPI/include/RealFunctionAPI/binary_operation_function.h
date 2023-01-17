@@ -6,9 +6,9 @@
 #include <ostream>
 #include <string>
 
-#include "real_function.h"
+#include "real_function_base.h"
 
-namespace RealFunctionAPI{
+namespace RealFunctionAPI_impl{
 class BinaryOperationFunction : public RealFunctionBase{
 
     using operation_type = std::function<real_type (real_type, real_type)>;

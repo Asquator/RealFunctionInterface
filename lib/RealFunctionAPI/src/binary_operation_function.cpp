@@ -6,7 +6,7 @@
 
 using std::unique_ptr;
 
-namespace RealFunctionAPI{
+namespace RealFunctionAPI_impl{
 
 
 

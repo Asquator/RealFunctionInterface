@@ -6,7 +6,7 @@
 #include "binary_operation_function.h"
 #include "real_function.h"
 
-namespace RealFunctionAPI{
+namespace RealFunctionAPI_impl{
 class DifferenceFunction : public BinaryOperationFunction{
 
     public:

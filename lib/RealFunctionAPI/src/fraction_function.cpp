@@ -13,7 +13,7 @@
 using std::ostream;
 using std::unique_ptr;
 
-namespace RealFunctionAPI {
+namespace RealFunctionAPI_impl {
 
 FractionFunction::FractionFunction(const RealFunctionBase &left, const RealFunctionBase &right):
     BinaryOperationFunction(left, right, std::divides<real_type>()){}

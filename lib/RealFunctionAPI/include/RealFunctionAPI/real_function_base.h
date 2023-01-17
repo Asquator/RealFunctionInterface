@@ -6,7 +6,7 @@
 #include <ostream>
 #include "real_math.h"
 
-namespace RealFunctionAPI{
+namespace RealFunctionAPI_impl{
 
 class RealFunctionBase{
 
